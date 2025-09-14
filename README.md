@@ -1,47 +1,48 @@
-# EDA-Titanic-Project
-# Titanic Survival Exploration – EDA Project
+# Titanic Survival Prediction – Machine Learning 
 
-This project performs **Exploratory Data Analysis (EDA)** on the Titanic dataset to understand patterns in passenger survival. It is my first hands-on EDA project, done as part of my data science learning journey.
+**Objective:**  
+Predict survival of passengers on the Titanic using Machine Learning.
 
-##Dataset
 
-The dataset used is the famous [Titanic dataset](https://www.kaggle.com/c/titanic/data), containing information about passengers aboard the Titanic, including features like:
 
-- Name, Age, Sex
-- Passenger Class (Pclass)
-- Fare, Embarked port
-- Number of siblings/spouses (SibSp)
-- Number of parents/children (Parch)
-- Survival status (0 = No, 1 = Yes)
+##  Steps
 
-## Analysis Performed
+### 1. Data Exploration (EDA)
+- Performed univariate and multivariate analysis using plots.  
+- Observed survival trends across features like `Pclass`, `Age`, `Fare`, and `Sex`.
 
-The project includes:
+### 2. Feature Engineering
+- Created **Family Size** = `SibSp + Parch + 1`  
+- Created **Known Cabin** (1 if Cabin is known, 0 otherwise)  
+- Grouped **Age** into categories for analysis  
 
-###🔹1. Data Loading & Cleaning
-- Loaded dataset and checked for null values
-- Cleaned missing data (Age, Embarked, etc.)
-- Created new feature: `FamilySize` = `SibSp + Parch + 1`
+### 3. Handling Missing Values
+- Used **SimpleImputer** for numeric columns (median)  
+- Used most frequent strategy or custom handling for categorical columns  
 
-###🔹2. Univariate Analysis
-- Distribution of Age and Fare (histplots)
-- Countplots for Sex, Pclass, and Family Size
+### 4. Encoding Categorical Features
+- Converted categorical columns (`Sex`, `Embarked`) into numeric format using **OneHotEncoder**  
 
-###🔹3. Bivariate Analysis
-- Survival rates by Sex and Pclass
-- Age group survival comparison
-- Fare vs Survival (violin plot)
+### 5. Preprocessing & Pipeline
+- Built a **Pipeline** including imputation and scaling  
+- Ensures reproducible preprocessing for any model  
 
-###🔹4. Multivariate Analysis
-- Countplot of Sex and Pclass with Survival hue
-- Catplot combining multiple features
+### 6. Model Training & Evaluation
+- Compared **Logistic Regression**, **Decision Tree**, and **Random Forest**  
+- Evaluated with **10-fold cross-validation**  
+- Best model: **Logistic Regression (~80% accuracy)**  
 
-##  Key Insights
+### 7. Performance Metrics
+- Confusion Matrix, Precision, Recall, F1-score  
+- Logistic Regression had better balance between predicting survivors and non-survivors  
 
-- **Females had a higher survival rate** than males.
-- **First class passengers were more likely to survive**.
-- **Younger age groups had higher survival chances**.
-- Family size had a slight effect on survival probability.
+---
+
+## Results
+- Accuracy: ~80%  
+- Model successfully identifies the majority of survivors and non-survivors  
+- Example Confusion Matrix:
+
 
 ## 🛠 Tools & Libraries
 
@@ -51,19 +52,12 @@ The project includes:
 - Seaborn
 - Matplotlib
 - Jupyter Notebook
-
+-scikit-learn
 ##Files Included
 
-- `EDA-project.ipynb` – Jupyter notebook with full analysis
-- `Titanic.csv` – Dataset used
+- `Titanic_Disaster.ipynb` – Jupyter notebook with full analysis
+- `train_set.csv & test_set.csv` – Dataset used
 
-## Future Work
-
-- Apply machine learning models for survival prediction
-- Handle missing data with imputation
-- Feature engineering for Name/Title, Cabin, etc.
-
----
 
 
 
